@@ -1,0 +1,113 @@
+:root{
+    --bar-width: 40px;
+    --bar-height: 6px;
+    --hamburger-gap: 8px;
+    --foreground: #fff;
+    --background: #333;
+    --hamburger-margin: 8px;
+    --animation-time: 400ms ease-in-out;
+    --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+
+/* před kliknutím */
+.hamburger-menu{
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    width: max-content;
+    position: absolute;
+    top: var(--hamburger-margin);
+    left: var(--hamburger-margin);
+    z-index: 2;
+    cursor: pointer;
+}
+
+/* při tabnutí se změní */
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible{
+    border: 1px solid var(--background);
+    box-shadow: 0 0 0 1px var(--foreground);
+}
+
+/* vizuál */
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input{
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  border-radius: 9999px;
+  transform-origin: left center;
+  transition: opacity var(--animation-time), width var(--animation-time), rotate var(--animation-time),
+  translate var(--animation-time), background-color var(--animation-time);
+}
+
+/* odstranění rámečku */
+.hamburger-menu input{
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+/* rotace a změna velikosti */
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+  }
+  
+  .hamburger-menu:has(input:checked)::before {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / -2);
+  }
+  
+  .hamburger-menu:has(input:checked)::after {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 0 calc(var(--bar-height) / 2);
+  }
+  
+  .hamburger-menu input:checked {
+    opacity: 0;
+  }
+
+/* vyjetí sidebaru z boku */
+.sidebar{
+  transition: translate var(--animation-time);
+  translate: -100%;
+  padding: 0.5rem 1rem;
+  background-color: var(--background);
+  color: var(--foreground);
+  width: auto;
+  max-height: max-content;
+
+}
+
+.hamburger-menu.hamburger-menu:has(input:checked) + .sidebar{
+  translate: 0;
+}
+
+/* úprava obasu sidebaru */
+.sidebar div{
+  display: inline;
+  margin-left: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+}
+
+.sidebar a{
+  font-size: 30px;
+  color: #f0f0f0af;
+  text-decoration: none;
+}
+
+.sidebar a:hover{
+  color: #fff;
+}

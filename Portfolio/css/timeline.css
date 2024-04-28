@@ -1,0 +1,119 @@
+/*vertikální čára*/
+.timeline{
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.timeline::after{
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #000;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.container{
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+/*kruhy na čáře*/
+.container::after{
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -12px;
+    background-color: #fff;
+    border: 4px solid #000;
+    top: 19px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.right::after{
+    left: -13px;
+}
+
+/*umístění bloků*/
+.left{
+    left: 0;
+}
+
+.right{
+    left: 50%;
+}
+
+/*šipky*/
+.left::before{
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 21px;
+    width: 0;
+    z-index: 1;
+    right: 25px;
+    border: medium solid #fff;
+    border-width: 10px 0 10px 15px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.right::before{
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 21px;
+    width: 0;
+    z-index: 1;
+    left: 25px;
+    border: medium solid #fff;
+    border-width: 10px 15px 10px 0;
+    border-color: transparent #fff transparent transparent;
+}
+
+/*obsah bloků*/
+.content{
+    padding: 20px 30px;
+    color: #000;
+    background-color: #fff;
+    position: relative;
+    border-radius: 10px;
+}
+
+/*úprava pro úzké obrazovky*/
+
+/*timelina doleva*/
+@media screen and (max-width: 800px){
+    .timeline::after{
+        left: 31px;
+    }
+
+    .container{
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    /*šipky ukazují doleva*/
+    .container::before{
+        left: 55px;
+        border: medium solid white;
+        border-width: 10px 15px 10px 0;
+        border-color: transparent #fff transparent transparent;
+    }
+    
+    /*kruhy na čáru*/
+    .left::after, .right::after{
+        left: 15px;
+    }
+
+    .right{
+        left: 0%;
+    }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jan Malac Hra</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/game.css">
+    <link rel="stylesheet" href="css/hamburger.css">
+    <script defer src="js/game.js"></script>
+    <script src="js/menu.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+
+
+    <body-menu></body-menu>
+
+
+    <div class="gamecontainer">
+        <div class="gamecontainer_wrapper">
+            <button type="button" class="btn btn_again">NOVÁ HRA</button>
+            <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+            <button type="button" class="btn btn_surprise">PŘEKVAPENÍ :)</button>
+            </a>
+        </div>
+        <h2>Hádej číslo</h2>
+        <p class="hide_num">?</p>
+        <p class="message">Začni hádat...</p>
+
+        <div class="number_data">
+            <form>
+                <input type="number" placeholder="Napiš číslo od 1 do 20!" class="input_number">
+                <button type="button" class="btn btn_check" id="enterButton">OK</button>
+            </form>
+
+            <div class="content">
+                <p>Skóre: <span class="score">10</span></p>
+                <p>Poslední skóre: <span class="last_score">0</span></p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
