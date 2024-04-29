@@ -38,6 +38,20 @@
                     <input type="submit" value="Přidat výsledek">
             </form>
         </div>
+
+    <?php
+    $ipAddress = $_SERVER['REMOTE_ADDR'];
+    ?>
+
+    <script>
+        function showIP() {
+            var ipAddress = "<?php echo $ipAddress; ?>";
+
+            window.alert("Vaše IP adresa je: " + ipAddress);
+        }
+    </script>
+
+    <button onclick="showIP()">Ukázat Vaši IP adresu.</button>
         
 </body>
 
