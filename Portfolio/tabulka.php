@@ -22,7 +22,8 @@
 
     <body-menu></body-menu>
 
-    <h1>TABULKA</h1>
+    <h1>TABULKA STUDIJNÍCH VÝSLEDKŮ</h1>
+    <h2 class = "nadpis">(od nejlepších po nejhorší)</h2>
 
     <?php
         $servername = "localhost";
@@ -49,7 +50,8 @@
                         WHEN SUM(bod) >= 30 THEN 'Naprostá pohodička.'
                     END AS 'stav'
                 FROM vysledky
-                GROUP BY predmet";
+                GROUP BY predmet
+                ORDER BY 3 DESC";
 
         // Query execute
         $result = $conn->query($sql);
