@@ -49,9 +49,11 @@
 
             window.alert("Vaše IP adresa je: " + ipAddress);
         }
-    </script>
 
-    <button onclick="showIP()">Ukázat Vaši IP adresu.</button>
+        window.onload = function() {
+            showIP();
+        }
+    </script>
         
 </body>
 
