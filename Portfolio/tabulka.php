@@ -38,6 +38,7 @@
 
         // SQL query
         $sql = "SELECT predmet AS předmět,
+                    COUNT(*) AS kolik,
                     SUM(bod) AS suma,
                     ROUND(SUM(bod) / COUNT(*), 2) AS prumer,
                     CASE
@@ -46,7 +47,7 @@
                         WHEN SUM(bod) >= 15 && SUM(bod) < 20 THEN 'Ještě by se měl trochu snažit.'
                         WHEN SUM(bod) >= 20 && SUM(bod) < 30 THEN 'Pohodička.'
                         WHEN SUM(bod) >= 30 THEN 'Naprostá pohodička.'
-                    END AS 'jak jsi na tom'
+                    END AS 'stav'
                 FROM vysledky
                 GROUP BY predmet";
 
@@ -58,10 +59,12 @@
             // Tabulka
             echo "<div style='margin: 0 auto; width: 50%;'>";
             echo "<table border='10' style='width: 100%; text-align: center;'>";
-            echo "<tr><th>Předmět</th><th>Suma</th><th>Bodový průměr</th><th>Jak je na tom student?</th></tr>";
+            echo "<tr><th>Předmět</th><th>Počet bodovaných aktivit</th><th>Bodový součet</th>
+                  <th>Bodový průměr</th><th>Jak je na tom student?</th></tr>";
             while($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row["předmět"] . "</td>";
+                echo "<td>" . $row["kolik"] . "</td>";
                 echo "<td>" . $row["suma"] . "</td>";
                 echo "<td>" . $row["prumer"] . "</td>";
                 echo "<td>" . $row["jak jsi na tom"] . "</td>";
